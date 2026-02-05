@@ -12,18 +12,42 @@
 
 #include "get_next_line.h"
 
-char *extract_next_line(char **buffer, int fd)
+char	*extract_line(char **buffer)
 {
 	char	*line;
 	char	*tmp;
+
+	if (!*buffer)
+		return (NULL);
+	line = get_line(*buffer);
+	if (!line)
+	{
+		free(*buffer);
+		*buffer = NULL;
+		return (NULL);
+	}
+	tmp = *buffer;
+	*buffer = get_remaining(tmp);
+	free(tmp);
+	if (!*buffer || **buffer == '\0')
+	{
+		free(*buffer);
+		*buffer = NULL;
+	}
+	return (line);
+}
+
+char	*fill_buffer(char **buffer, int fd)
+{
 	char	temp_store[BUFFER_SIZE + 1];
 	int		bytes_read;
+	char	*tmp;
 
 	while (!find_new_line(*buffer))
 	{
 		bytes_read = read(fd, temp_store, BUFFER_SIZE);
 		if (bytes_read <= 0)
-			break;
+			break ;
 		temp_store[bytes_read] = '\0';
 		tmp = *buffer;
 		*buffer = ft_strjoin(tmp, temp_store);
@@ -38,18 +62,24 @@ char *extract_next_line(char **buffer, int fd)
 		*buffer = NULL;
 		return (NULL);
 	}
-	line = get_line(*buffer);
-	tmp = *buffer;
-	*buffer = get_remaining(tmp);
-	free(tmp);
-	return (line);
+	return (*buffer);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
-	
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		free(buffer);
+		buffer = NULL;
 		return (NULL);
-	return (extract_next_line(&buffer, fd));
+	}
+	if (!fill_buffer(&buffer, fd))
+	{
+		free(buffer);
+		buffer = NULL;
+		return (NULL);
+	}
+	return (extract_line(&buffer));
 }

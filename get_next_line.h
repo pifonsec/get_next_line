@@ -11,15 +11,16 @@
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
-#define GET_NEXT_LINE_H
-#define BUFFER_SIZE 1024
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/uio.h>
-#include <unistd.h>
+# define GET_NEXT_LINE_H
+# define BUFFER_SIZE 1024
+# include <stdlib.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
 
 char	*get_next_line(int fd);
-char	*extract_next_line(char	**buffer, int fd);
+char	*fill_buffer(char **buffer, int fd);
+char	*extract_line(char **buffer);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		find_new_line(char *str);

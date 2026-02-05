@@ -6,7 +6,7 @@
 /*   By: pifonsec <pifonsec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 10:05:34 by pifonsec          #+#    #+#             */
-/*   Updated: 2025/12/19 12:44:58 by pifonsec         ###   ########.fr       */
+/*   Updated: 2026/02/05 09:43:00 by pifonsec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_strlen(const char *str)
 
 	i = 0;
 	if (!str)
-		return(0);
+		return (0);
 	while (str[i])
 		i++;
 	return (i);
@@ -50,7 +50,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 int	find_new_line(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -80,37 +80,37 @@ char	*get_remaining(char *str)
 		return (NULL);
 	i++;
 	remaining = malloc (sizeof (char) * ft_strlen(&str[i]) + 1);
-		if(!remaining)
-			return (NULL);
+	if (!remaining)
+		return (NULL);
 	while (str[i])
 		remaining[j++] = str[i++];
 	remaining[j] = '\0';
 	return (remaining);
 }
 
-char *get_line(char *str)
+char	*get_line(char *str)
 {
-    int     i;
-    char    *line;
+	int		i;
+	char	*line;
 
-    i = 0;
-    if (!str)
-        return (NULL);
-    while (str[i] && str[i] != '\n')
-        i++;
-    if (str[i] == '\n')
-        i++;
-    line = malloc(i + 1);
-    if (!line)
-        return (NULL);
-    i = 0;
-    while (str[i] && str[i] != '\n')
-    {
-        line[i] = str[i];
-        i++;
-    }
-    if (str[i] == '\n')
-        line[i++] = '\n';
-    line[i] = '\0';
-    return (line);
+	i = 0;
+	if (!str)
+		return (NULL);
+	while (str[i] && str[i] != '\n')
+		i++;
+	if (str[i] == '\n')
+		i++;
+	line = malloc(i + 1);
+	if (!line)
+		return (NULL);
+	i = 0;
+	while (str[i] && str[i] != '\n')
+	{
+		line[i] = str[i];
+		i++;
+	}
+	if (str[i] == '\n')
+		line[i++] = '\n';
+	line[i] = '\0';
+	return (line);
 }
