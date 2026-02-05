@@ -28,11 +28,16 @@ char *extract_next_line(char **buffer, int fd)
 		tmp = *buffer;
 		*buffer = ft_strjoin(tmp, temp_store);
 		free(tmp);
+		tmp = NULL;
 		if (!*buffer)
 			return (NULL);
 	}
 	if (!*buffer || **buffer == '\0')
+	{
+		free(*buffer);
+		*buffer = NULL;
 		return (NULL);
+	}
 	line = get_line(*buffer);
 	tmp = *buffer;
 	*buffer = get_remaining(tmp);
