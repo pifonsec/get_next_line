@@ -6,13 +6,12 @@
 /*   By: pifonsec <pifonsec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 11:07:12 by pifonsec          #+#    #+#             */
-/*   Updated: 2025/12/18 09:19:30 by pifonsec         ###   ########.fr       */
+/*   Updated: 2026/02/06 09:16:04 by pifonsec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFFER_SIZE 1024
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/uio.h>
