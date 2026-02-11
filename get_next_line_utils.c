@@ -6,13 +6,13 @@
 /*   By: pifonsec <pifonsec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 10:05:34 by pifonsec          #+#    #+#             */
-/*   Updated: 2026/02/06 10:15:53 by pifonsec         ###   ########.fr       */
+/*   Updated: 2026/02/11 11:48:44 by pifonsec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+static size_t	ft_strlen(const char *str)
 {
 	int	i;
 
